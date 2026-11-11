@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {useState} from 'react';
+import {ActivityIndicator, Text, Button, View} from 'react-native';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {useTranslation} from 'react-i18next';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import './src/i18n';
+import {useLoadTranslations, useLanguages} from './src/hooks/useTranslations';
+
+
+const queryCleint = new QueryClient();
+
+
+function Main () {
+  const [language, setLanguage]  = useState('az');
+  const {isLoading, isError}  = useLoadTranslations(language);
+  
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
